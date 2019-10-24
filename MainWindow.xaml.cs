@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ActiveMq_Utils;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -26,10 +27,18 @@ namespace AppliTransportSNCF
         private string host = ConfigurationManager.AppSettings["ActiveMQ_host"];
         private string port = ConfigurationManager.AppSettings["ActiveMQ_port"];
         private string topic = ConfigurationManager.AppSettings["ActiveMQ_topic"];
-
+        ActivMQListner listner;
         public MainWindow()
         {
             InitializeComponent();
+            listner = new ActivMQListner(user, pwd, host, port, topic); // lien connexion
+            listner.eventMsg += Listner_eventMsg; //abooné a evenement substriber
+            listner.start(); //lancer l'évenement
+        }
+
+        private void Listner_eventMsg(ActivMQListner l, Apache.NMS.ITextMessage msg)
+        {
+            Console.WriteLine(msg.Text); // je vais afficher dans la console
         }
     }
 }
