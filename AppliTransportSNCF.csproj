@@ -108,6 +108,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ActiveMq_Utils\ActiveMq_Utils.csproj">
+      <Project>{56e73172-46c0-42f7-9ab1-85cffb71ba02}</Project>
+      <Name>ActiveMq_Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MvvMTransport\MvvMTransport.csproj">
       <Project>{f721ae11-c3db-45a9-81f7-2e09673e61f4}</Project>
       <Name>MvvMTransport</Name>
